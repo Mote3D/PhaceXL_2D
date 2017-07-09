@@ -1,6 +1,6 @@
 ## PhaceXL 2D
 
-PhaceXL_2D is a script for the generation of finite-thickness interface elements for 2D polycrystal microstructure modelling. PhaceXL_2D parses a 2D polycrystal microstructure mesh file generated using the [Neper](http://neper.sourceforge.net/) software package and modified using the [Phon](http://dx.doi.org/10.5281/zenodo.16711) cohesive element generator and shrinks the existing grains by a predefined factor to create finite-thickness interface elements at the grain boundaries. PhaceXL_2D retains mesh periodicity at the domain boundary. The resulting mesh is exported in a format readable by Abaqus&#8482; software and can be used for finite-element analyses.
+PhaceXL_2D is a script for the generation of finite-thickness interface elements for 2D polycrystal microstructure modelling. It parses a 2D polycrystal microstructure mesh file generated using the [Neper](http://neper.sourceforge.net/) software package and modified using the [Phon](http://dx.doi.org/10.5281/zenodo.16711) cohesive element generator and shrinks the existing grains by a predefined factor to create finite-thickness interface elements at the grain boundaries. PhaceXL_2D retains mesh periodicity at the boundary of the modelling domain. The resulting mesh is exported in a format readable by Abaqus&#8482; software and can be used for finite-element analyses.
 
 To generate a 2D polycrystal microstructure mesh with finite-thickness interface elements, the following steps 
 have to be followed:
