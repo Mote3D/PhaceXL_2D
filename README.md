@@ -11,4 +11,6 @@ have to be followed:
 4. Parse both files in PhaceXL_2D to generate finite-thickness interface elements at the grain boundaries.
 5. Run finite-element analysis.
 
-PhaceXL_2D has been tested with [Python](http://www.python.org/downloads/) 2.6.5 and [NumPy](http://www.scipy.org/scipylib/download.html) 1.3.0.
+
+
+PhaceXL_2D has been tested with [Python](http://www.python.org/downloads/) 2.6.5 and [NumPy](http://www.scipy.org/scipylib/download.html) 1.3.0. PhaceXL_2D is licensed under the [GNU General Public License](LICENSE.txt).
