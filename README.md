@@ -1,3 +1,3 @@
-## PhaceXL_2D
+## PhaceXL 2D
 
-Script for the generation of finite-thickness interface elements for polycrystal modelling 
+PhaceXL 2D is a script for the generation of finite-thickness interface elements for polycrystal modelling 
