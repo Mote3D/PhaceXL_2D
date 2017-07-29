@@ -14,6 +14,8 @@ To generate a 2D polycrystal microstructure mesh with finite-thickness interface
 4. Parse both files in PhaceXL_2D to generate finite-thickness interface elements at the grain boundaries.
 5. Run finite-element analysis.
 
+![Exemplary 2D polycrystal mesh](docs/example_full.jpg "Exemplary 2D polycrystal mesh domain with finite-thickness interface elements at grain boundaries")
+
 #### How to use the script:
 
 Run [PhaceXL_2D](main/phaceXL_2D.py) using &nbsp; '*phaceXL_2D.py -i INPUTFILENAME -c CENTROIDFILENAME -p MPER -s SFACTOR*' &nbsp; from the command line. The following input parameters have to be specified:
