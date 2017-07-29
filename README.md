@@ -6,8 +6,6 @@ PhaceXL_2D is a script for the generation of finite-thickness interface elements
 
 ![Exemplary 2D polycrystal mesh segment](docs/example.jpg "Exemplary 2D polycrystal mesh segment with finite-thickness interface elements at grain boundaries")
 
-![Exemplary 2D polycrystal mesh](docs/example_full.jpg "Exemplary 2D polycrystal mesh domain with finite-thickness interface elements at grain boundaries")
-
 To generate a 2D polycrystal microstructure mesh with finite-thickness interface elements at the grain boundaries, the following steps have to be followed:
 
 1. Generate a 2D polycrystal microstructure mesh using [Neper](http://neper.sourceforge.net/).
@@ -15,7 +13,7 @@ To generate a 2D polycrystal microstructure mesh with finite-thickness interface
 3. Use [Phon](http://github.com/KristofferC/Phon) to insert zero-thickness cohesive elements at the grain boundaries.
 4. Parse both files in PhaceXL_2D to generate finite-thickness interface elements at the grain boundaries.
 
-
+![Exemplary 2D polycrystal mesh](docs/example_full.jpg "Exemplary 2D polycrystal mesh domain with finite-thickness interface elements at grain boundaries")
 
 #### How to use the script:
 
