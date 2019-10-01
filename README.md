@@ -16,10 +16,6 @@ To generate a 2D polycrystal microstructure mesh with finite-thickness interface
 3. Use [Phon](http://github.com/KristofferC/Phon) to insert zero-thickness cohesive elements at the grain boundaries.
 4. Parse both files in PhaceXL_2D to generate finite-thickness interface elements at the grain boundaries.
 
-#### License
-
-PhaceXL_2D is licensed under the [GNU General Public License](https://github.com/Mote3D/PhaceXL_2D/blob/master/LICENSE).
-
 #### Usage
 
 Run [PhaceXL_2D](main/phaceXL_2D.py) using &nbsp; '*phaceXL_2D.py -i INPUTFILENAME -c CENTROIDFILENAME -p MPER -s SFACTOR*' &nbsp; from the command line. The following input parameters have to be specified:
@@ -30,3 +26,7 @@ Run [PhaceXL_2D](main/phaceXL_2D.py) using &nbsp; '*phaceXL_2D.py -i INPUTFILENA
  *SFACTOR*:          &nbsp; factor controlling the amount of shrinkage for each grain.  
 
 PhaceXL_2D has been tested with [Python](http://www.python.org/downloads/) 2.6.5 and [NumPy](http://www.scipy.org/scipylib/download.html) 1.3.0.
+
+#### License
+
+PhaceXL_2D is licensed under the [GNU General Public License](https://github.com/Mote3D/PhaceXL_2D/blob/master/LICENSE).
