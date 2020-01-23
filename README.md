@@ -25,7 +25,7 @@ Run [PhaceXL_2D](main/phaceXL_2D.py) using &nbsp; '*phaceXL_2D.py -i INPUTFILENA
  *MPER*:             &nbsp; indication whether the polycrystal microstructure mesh is periodic ('y') or (by default) non-periodic ('n'),  
  *SFACTOR*:          &nbsp; factor controlling the amount of shrinkage for each grain.  
 
-PhaceXL_2D has been tested with [Python](http://www.python.org/downloads/) 2.6.5 and [NumPy](http://www.scipy.org/scipylib/download.html) 1.3.0.
+PhaceXL_2D has been tested with [Python](http://www.python.org/downloads/) 3.7.2 and [NumPy](http://www.scipy.org/scipylib/download.html) 1.16.2.
 
 #### License
 
