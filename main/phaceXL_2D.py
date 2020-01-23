@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-__copyright__ = "Copyright (C) 2017 Henning Richter, Rizviul Kabir" 
+__copyright__ = "Copyright (C) 2020 Henning Richter, Rizviul Kabir" 
 __email__ = "henning.richter@dlr.de, mohammad-rizviul.kabir@dlr.de"
-__version__ = "1.1"
+__version__ = "1.2"
 __license__ = """ 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -56,7 +56,7 @@ SFACTOR:          factor controlling the amount of shrinkage for each grain.
 
 import numpy as np
 import time
-from optparse import OptionParser
+import argparse
 
 
 def read_centroids(fname_cent):
@@ -337,23 +337,23 @@ def write_modinput(f2, nodes_write, elements_COH2D4, elements_CPE3, elements_CPE
 
 
 def main():
-    usage = "Run phaceXL_2D as: %prog -i INPUTFILENAME -c CENTROIDFILENAME -p MPER -s SFACTOR"
-    parser = OptionParser(usage)
-    parser.add_option("-i", dest="inputfilename",
-                      help="import polycrystal microstructure mesh from INPUTFILENAME")
-    parser.add_option("-c", dest="centroidfilename",
-                      help="read coordinates of grain centroids from CENTROIDFILENAME")
-    parser.add_option("-p", dest="mper", default="n", choices=["n", "y"],
-                      help="indicate whether mesh is periodic (MPER = 'y') or (by default) not periodic (MPER = 'n')")
-    parser.add_option("-s", dest="sfactor", type="float", default="0.1",
-                      help="SFACTOR, which should be selected from the interval (0, 0.5), controls the amount of shrinkage for each grain")
-    (opt, arg) = parser.parse_args()
+    parser = argparse.ArgumentParser(prog="phaceXL_2D.py", usage="Run phaceXL_2D as: python %(prog)s -i INPUTFILENAME -c CENTROIDFILENAME -p MPER -s SFACTOR",
+                                     description="PhaceXL_2D generates a 2D polycrystal microstructure mesh from Neper input data with finite-thickness interface elements at the grain boundaries.")
+    parser.add_argument("-i", dest="inputfilename",
+                        help="import polycrystal microstructure mesh from INPUTFILENAME")
+    parser.add_argument("-c", dest="centroidfilename",
+                        help="read coordinates of grain centroids from CENTROIDFILENAME")
+    parser.add_argument("-p", dest="mper", default="n", choices=["n", "y"],
+                        help="indicate whether mesh is periodic (MPER = 'y') or (by default) not periodic (MPER = 'n')")
+    parser.add_argument("-s", dest="sfactor", type=float, default="0.1",
+                        help="SFACTOR (default is 0.1), which should be selected from the interval (0, 0.5), controls the amount of shrinkage for each grain")
+    args = parser.parse_args()
 
     # Assign input parameters:
-    fname_inp = opt.inputfilename
-    fname_cent = opt.centroidfilename
-    mper = opt.mper
-    sfactor = opt.sfactor
+    fname_inp = args.inputfilename
+    fname_cent = args.centroidfilename
+    mper = args.mper
+    sfactor = args.sfactor
 
     # Initilize output file:
     f2 = open(fname_inp[:-4]+'.modified.inp', 'w')
