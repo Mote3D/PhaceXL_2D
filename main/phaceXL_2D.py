@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-__copyright__ = "Copyright (C) 2020 Henning Richter, Rizviul Kabir" 
-__email__ = "henning.richter@dlr.de, mohammad-rizviul.kabir@dlr.de"
+__copyright__ = "Copyright (C) 2021 Henning Richter, Rizviul Kabir" 
+__email__ = "henning.richter@sglcarbon.com, mohammad-rizviul.kabir@dlr.de"
 __version__ = "1.2"
 __license__ = """ 
     This program is free software: you can redistribute it and/or modify
