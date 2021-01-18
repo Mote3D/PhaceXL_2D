@@ -40,7 +40,7 @@ have to be carried out:
 4) parse both files in phaceXL_2D to generate finite-thickness interface elements,
 5) run finite-element analysis
 
-phaceXL_2D has been tested with Python 2.6.5 and NumPy 1.3.0.
+phaceXL_2D v1.2 has been tested with Python 3.7.2 and NumPy 1.16.2.
 
 Run phaceXL_2D as 'phaceXL_2D.py -i INPUTFILENAME -c CENTROIDFILENAME -p MPER -s SFACTOR'
 from the command line. The following input parameters have to be specified:
