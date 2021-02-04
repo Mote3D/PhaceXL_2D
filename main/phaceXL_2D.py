@@ -67,7 +67,7 @@ def read_centroids(fname_cent):
                 centroids = np.array([int(cent.split(' ')[0]), float(cent.split(' ')[1]), float(cent.split(' ')[2]), 0.0])
                 while True:
                     try:
-                        cent = f0.next()
+                        cent = next(f0)
                         centroids = np.vstack([centroids, [int(cent.split(' ')[0]), float(cent.split(' ')[1]), float(cent.split(' ')[2]), 0.0]])
                     except StopIteration:
                         break
@@ -83,31 +83,31 @@ def read_input(fname_inp, f2, centroids):
             if line.startswith('*Part'):
                 f2.write(line)
             elif line.startswith('*Node'):
-                cline = f1.next()
+                cline = next(f1)
                 nodes = np.array([int(cline.split(',')[0]), float(cline.split(',')[1]), float(cline.split(',')[2]), float(cline.split(',')[3])])
                 while True:
-                    cline = f1.next()
+                    cline = next(f1)
                     try:
                         isinstance(int(cline.split(',')[0]), int)
                         nodes = np.vstack([nodes, [int(cline.split(',')[0]), float(cline.split(',')[1]), float(cline.split(',')[2]), float(cline.split(',')[3])]])
                     except ValueError:
                         break
             elif line.startswith('*Element, type=CPE3'):
-                cline = f1.next()
+                cline = next(f1)
                 elements_CPE3 = np.array([int(cline.split(',')[0]), int(cline.split(',')[1]), int(cline.split(',')[2]), int(cline.split(',')[3])])
                 while True:
-                    cline = f1.next()
+                    cline = next(f1)
                     try:
                         isinstance(int(cline.split(',')[0]), int)
                         elements_CPE3 = np.vstack([elements_CPE3, [int(cline.split(',')[0]), int(cline.split(',')[1]), int(cline.split(',')[2]), int(cline.split(',')[3])]])
                     except ValueError:
                         break
             elif line.startswith('*Element, type=COH2D4'):
-                cline = f1.next()
+                cline = next(f1)
                 elements_COH2D4 = np.array([int(cline.split(',')[0]), int(cline.split(',')[1]), int(cline.split(',')[2]), int(cline.split(',')[3]),
                                             int(cline.split(',')[4])])
                 while True:
-                    cline = f1.next()
+                    cline = next(f1)
                     try:
                         isinstance(int(cline.split(',')[0]), int)
                         elements_COH2D4 = np.vstack([elements_COH2D4, [int(cline.split(',')[0]), int(cline.split(',')[1]), int(cline.split(',')[2]), int(cline.split(',')[3]),
@@ -117,10 +117,10 @@ def read_input(fname_inp, f2, centroids):
             elif line.startswith('*Elset'):
                 for j in range(1, len(centroids[:,0])+1, 1):
                     if line.rstrip() == ('*Elset, elset=face'+'%i' %j):
-                        cline = f1.next()
+                        cline = next(f1)
                         elsets['Elset_face'+'%i' %j] = cline.strip().split(',')
                         while True:
-                            cline = f1.next()
+                            cline = next(f1)
                             try:
                                 isinstance(int(cline.split(',')[0]), int)
                                 elsets['Elset_face'+'%i' %j].extend(cline.strip().split(','))
@@ -359,7 +359,7 @@ def main():
     f2 = open(fname_inp[:-4]+'.modified.inp', 'w')
 
     # Read grain centroids:
-    print ("\nReading files...\n")
+    print("\nReading files...\n")
     time.sleep(1)
     centroids = read_centroids(fname_cent)
 
@@ -370,7 +370,7 @@ def main():
     (multipointlist, multipointredlist, tpsets, nsets) = translate_nodes(nodes, elsets, centroids, elements_CPE3, sfactor)
 
     # Update node coordinates:
-    print ("Generating finite-thickness interface elements...\n")
+    print("Generating finite-thickness interface elements...\n")
     time.sleep(1)
     nodes_write = update_coordinates(nsets, nodes)
 
@@ -387,7 +387,7 @@ def main():
     write_modinput(f2, nodes_write, elements_COH2D4, elements_CPE3, elements_CPE3_write, fname_inp)
 
     # Print notification:
-    print ("Modified input file for SFACTOR = %f successfully generated.\n" %sfactor)
+    print("Modified input file for SFACTOR = %f successfully generated.\n" %sfactor)
     time.sleep(1)
 
 
