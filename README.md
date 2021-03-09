@@ -33,4 +33,4 @@ An example with files will be added soon...
 
 #### License
 
-PhaceXL_2D is licensed under the [GNU General Public License](https://github.com/Mote3D/PhaceXL_2D/blob/master/LICENSE).
+PhaceXL_2D is licensed under the [GNU General Public License](https://github.com/Mote3D/PhaceXL_2D/blob/master/LICENSE.txt).
