@@ -115,7 +115,7 @@ def read_input(fname_inp, f2, centroids):
                     except ValueError:
                         break
             elif line.startswith('*Elset'):
-                for j in range(1, len(centroids[:,0])+1, 1):
+                for j in range(1, len(centroids[:, 0])+1, 1):
                     if line.rstrip() == ('*Elset, elset=face'+'%i' %j):
                         cline = next(f1)
                         elsets['Elset_face'+'%i' %j] = cline.strip().split(',')
@@ -129,6 +129,14 @@ def read_input(fname_inp, f2, centroids):
                     else:
                         continue
     return (nodes, elements_CPE3, elements_COH2D4, elsets)
+
+### # Compute grain centroids:
+#elnumber = len(elements_CPE3[:, 0])
+#centroids = np.zeros((elnumber, 4))
+
+#for q in range(0, elnumber, 1):
+#    centroids[q] = np.append(elements_CPE3[q, 0], np.mean(nodes[elements_CPE3[q, 1:]-1][:, 1:], axis=0))
+###
 
 
 def translate_nodes(nodes, elsets, centroids, elements_CPE3, sfactor):
@@ -186,8 +194,8 @@ def update_coordinates(nsets, nodes):
     new_entries = []
     new_entries.append([z for z in nsets.values()])
     new_entries = np.concatenate(new_entries[0], axis=0)
-    box_length_x = max(nodes[:,1])
-    box_length_y = max(nodes[:,2])
+    box_length_x = max(nodes[:, 1])
+    box_length_y = max(nodes[:, 2])
     nodes_write = nodes.copy()
 
     for it3 in new_entries[:, 0]:
@@ -225,10 +233,10 @@ def assure_period(nodes_write):
     nodes_y1 = nodes_y1[np.argsort(nodes_y1[:, 1], 0)]
     nodes_y1[:, 1] = nodes_y0[:, 1].copy()
 
-    for it4 in nodes_x1[:,0]:
+    for it4 in nodes_x1[:, 0]:
         [nodes_write[np.where(nodes_write[:, 0] == int(it4))[0][0]]][0][2] = nodes_x1[np.where(nodes_x1[:, 0] == int(it4))][0, 2]
 
-    for it5 in nodes_y1[:,0]:
+    for it5 in nodes_y1[:, 0]:
         [nodes_write[np.where(nodes_write[:, 0] == int(it5))[0][0]]][0][1] = nodes_y1[np.where(nodes_y1[:, 0] == int(it5))][0, 1]
     return nodes_write
 
