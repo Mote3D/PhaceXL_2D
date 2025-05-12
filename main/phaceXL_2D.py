@@ -115,15 +115,15 @@ def read_input(fname_inp, f2, centroids):
                     except ValueError:
                         break
             elif line.startswith('*Elset'):
-                for j in range(1, len(centroids[:, 0])+1, 1):
+                for j in range(1, len(elements_CPE3[:, 0])+1, 1):
                     if line.rstrip() == ('*Elset, elset=face'+'%i' %j):
                         cline = next(f1)
-                        elsets['Elset_face'+'%i' %j] = cline.strip().split(',')
+                        elsets['Elset_face'+'%i' %j] = [int(x) for x in cline.strip().split(',')]
                         while True:
-                            cline = next(f1)
+                            cline = next(f1, ',')
                             try:
                                 isinstance(int(cline.split(',')[0]), int)
-                                elsets['Elset_face'+'%i' %j].extend(cline.strip().split(','))
+                                elsets['Elset_face'+'%i' %j].extend([int(x) for x in cline.strip().split(',')])
                             except ValueError:
                                 break
                     else:
@@ -131,11 +131,21 @@ def read_input(fname_inp, f2, centroids):
     return (nodes, elements_CPE3, elements_COH2D4, elsets)
 
 ### # Compute grain centroids:
-#elnumber = len(elements_CPE3[:, 0])
-#centroids = np.zeros((elnumber, 4))
+#elnumber_CPE3 = len(elements_CPE3[:, 0])
+#number_grains = len(elsets)
+#centroids_CPE3 = np.zeros((elnumber_CPE3, 4))
+#areas_CPE3 = np.zeros((elnumber_CPE3, 2))
 
-#for q in range(0, elnumber, 1):
-#    centroids[q] = np.append(elements_CPE3[q, 0], np.mean(nodes[elements_CPE3[q, 1:]-1][:, 1:], axis=0))
+#for q in range(0, elnumber_CPE3, 1):
+#    centroids_CPE3[q] = np.append(elements_CPE3[q, 0], np.mean(nodes[elements_CPE3[q, 1:]-1][:, 1:], axis=0))
+#    areas_CPE3[q] = np.append(elements_CPE3[q, 0], 0.5*np.linalg.det(np.concatenate((nodes[elements_CPE3[q, 1:]-1][:, 1:3], np.ones((3, 1))), axis=1)))
+#
+#for u in range(1, number_grains+1, 1):
+#    elsets['Elset_face'+'%i' %u +'_area'] = float(np.sum([areas_CPE3[x-1, 1:] for x in elsets['Elset_face'+'%i' %u]], axis=0)[0])
+#    elsets['Elset_face'+'%i' %u +'_centroid'] = np.sum([centroids_CPE3[x-1, 1:]*areas_CPE3[x-1, 1:] for x in elsets['Elset_face'+'%i' %u]], axis=0)/elsets['Elset_face'+'%i' %u +'_area']
+
+# check:
+#np.sum(areas_CPE3[:, 1])
 ###
 
 
